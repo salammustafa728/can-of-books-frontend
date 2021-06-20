@@ -7,11 +7,16 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import Login from './Login';
+import Profile from './Component/Profile'
+import {withAuth0} from "@auth0/auth0-react"
+
 
 class App extends React.Component {
 
   render() {
     console.log('app', this.props);
+    const {isAuthenticated}=this.props.auth0
     return(
       <>
         <Router>
@@ -20,8 +25,18 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
+                  <Login/>
               </Route>
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
+             <Route exact path='/profile'>
+              {
+                isAuthenticated && (
+                  <>
+                  <Profile/>
+                  </>
+                )
+              }
+              </Route>
             </Switch>
             <Footer />
           </IsLoadingAndError>
@@ -31,4 +46,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0( App);
