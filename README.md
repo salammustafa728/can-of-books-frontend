@@ -1,6 +1,6 @@
 # can-of-books-frontend
 
-**Author**: Salam Mustafa And Shahd Al-Jalam
+**Author**: Salam Mustafa And Baraa Al-Osaily
 
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
@@ -27,12 +27,12 @@ We uesd the React and JavaScript and VScode to build this project
 
 
 
-Name of feature: ________________________________
+Name of feature: React.JS,Authincation and Authorization
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4 H
 
-Start time: _____
+Start time: 3 PM
 
-Finish time: _____
+Finish time: 7 PM
 
-Actual time needed to complete: _____
+Actual time needed to complete: 5 H
