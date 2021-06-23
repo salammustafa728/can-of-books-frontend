@@ -3,8 +3,8 @@ import { withAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+// import Card from 'react-bootstrap/Card'
+// import Button from 'react-bootstrap/Button'
 
 
 export class BestBooks extends Component {
@@ -40,26 +40,19 @@ export class BestBooks extends Component {
                                         <Carousel.Item>
                                             <img
                                                 className="d-block w-100"
-                                                src="holder.js/800x400?text=First slide&bg=373940"
+                                                src="https://www.verywellmind.com/thmb/L_4A6KQOvCiR3D2ZyL62XvZaBg4=/2067x2067/smart/filters:no_upscale()/numerous-stacks-of-books-693407302-5b350a7346e0fb0037b3c200.jpg"
                                                 alt="First slide"
                                             />
                                             <Carousel.Caption>
-                                                <Card style={{ width: '18rem' }}>
+                                                {/* <Card style={{ width: '18rem' }}>
                                                     <Card.Img variant="top" src="holder.js/100px180" />
-                                                    <Card.Body>
-                                                        <Card.Title>{value.name}</Card.Title>
-                                                        <Card.Text>
+                                                    <Card.Body> */}
+                                                       <h1>{value.name}</h1> 
+                                                       
                                                         <p>{value.description}</p>
                                                          <p>{value.status}</p>
-                                                        </Card.Text>
-                                                        <Card.Text>
+                                                      
                                                          <p>{value.status}</p>
-                                                        </Card.Text>
-                                                        <Button variant="primary">Go somewhere</Button>
-                                                    </Card.Body>
-                                                </Card>
-                                                
-                                               
                                             </Carousel.Caption>
                                         </Carousel.Item>
                                     </Carousel>
