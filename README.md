@@ -1,6 +1,6 @@
 # can-of-books-frontend
 
-**Author**: Salam Mustafa And Baraa Al-osaily
+**Author**: Salam Mustafa And Shahd Al-Jalam
 
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
@@ -12,11 +12,11 @@ This is a can of books Project and it's a small app to track what books have imp
 
 ## Getting Started
 
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+The user can search about books and delete, update and create new book from yhe database
 
 ## Architecture
 
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
 
 We uesd the React and JavaScript and VScode to build this project
 
@@ -26,6 +26,8 @@ We uesd the React and JavaScript and VScode to build this project
 
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+
 
 ## Credit and Collaborations
 
