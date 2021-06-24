@@ -20,28 +20,40 @@ export class BestBooks extends Component {
             description: '',
             status: '',
             showUpdateForm: false,
-            bookNameUpdate: '',
-            descriptionUpdate: '',
-            statusUpdate: '',
+            // bookNameUpdate: '',
+            // descriptionUpdate: '',
+            // statusUpdate: '',
             bookIndex: 0
 
         }
     }
-    updateBookName = (bookName) => this.setState({ bookName });
-    updateBookDescription = (description) => this.setState({ description });
-    updateBookStatus = (status) => this.setState({ status });
+    updateBookName = (e) => this.setState({ bookName:e.target.value });
+    updateBookDescription = (e) => this.setState({ description:e.target.value });
+    updateBookStatus = (e) => this.setState({ status:e.target.value });
 
     updateBookNameUpdate = (bookName) => this.setState({ bookNameUpdate: bookName });
     updatedescriptionUpdate = (description) => this.setState({ descriptionUpdate: description });
     updatestatusUpdate = (status) => this.setState({ statusUpdate: status });
-    showUpdateForm = (booksObj, idx) => this.setState({
+    showUpdateForm = () => this.setState({
         showUpdateForm: !this.state.showUpdateForm,
-        bookNameUpdate: booksObj.name,
-        descriptionUpdate: booksObj.description,
-        statusUpdate: booksObj.status,
-        bookIndex: idx
-    })
 
+        // bookNameUpdate: booksObj.name,
+        // descriptionUpdate: booksObj.description,
+        // statusUpdate: booksObj.status,
+        // bookIndex: idx
+    });
+    
+    componentDidMount = () => {
+        axios.get(`${this.state.serverUrl}/books?email=${this.state.email}`).then(response => {
+            this.setState({
+                booksData: response.data.books
+            })
+        }).catch(
+            error => {
+                alert(error.message);
+            }
+        );
+    }
 
     creteMyBook = (evt) => {
         evt.preventDefault();
@@ -52,7 +64,7 @@ export class BestBooks extends Component {
             email: this.state.email
         }
 
-        axios.post(`${this.state.serverUrl}/book`, requestBody).then(response => {
+        axios.post(`${this.state.serverUrl}/books`, requestBody).then(response => {
             this.setState({
                 booksData: response.data.books
             })
@@ -61,15 +73,16 @@ export class BestBooks extends Component {
         })
     }
 
-    UpdateBookName = (bookName) => { this.setState({ bookName }) }
-    UpdatebookDescrption = (bookDescrption) => { this.setState({ bookDescrption }) }
-    Updatebookstatus = (bookstatus) => { this.setState({ bookstatus }) }
-    updateBookModel = (bookName) => { this.setState({ bookUpdateName: bookName }) }
-    updatedescriptionUpdate = (description) => this.setState({ bookUpdateDescrption: description });
-    updatestatusUpdate = (status) => this.setState({ bookUpdateStatus: status });
+    // UpdateBookName = (bookName) => { this.setState({ bookName }) }
+    // UpdatebookDescrption = (bookDescrption) => { this.setState({ bookDescrption }) }
+    // Updatebookstatus = (bookstatus) => { this.setState({ bookstatus }) }
+    // updateBookModel = (bookName) => { this.setState({ bookUpdateName: bookName }) }
+    // updatedescriptionUpdate = (description) => this.setState({ bookUpdateDescrption: description });
+    // updatestatusUpdate = (status) => this.setState({ bookUpdateStatus: status });
 
     deleteMyBook = (index) => {
-        axios.delete(`${this.state.serverUrl}/books/${index}?email=${this.state.email}`).then(response => {
+        const query = {email: this.state.auth0.user.email}
+        axios.delete(`${this.state.serverUrl}/books/${this.state.booksData[index]._id}`,{params:query}).then(response => {
             this.setState({
                 booksData: response.data.books,
                 showUpdateForm: false
@@ -86,7 +99,7 @@ export class BestBooks extends Component {
             status: this.state.statusUpdate,
             email: this.state.email
         }
-
+        console.log(requestBody);
         axios.put(`${this.state.serverUrl}/books/${this.state.bookIndex}`, requestBody).then(response => {
             this.setState({
                 booksData: response.data.books
@@ -107,17 +120,7 @@ export class BestBooks extends Component {
         })
 
     }
-    componentDidMount = () => {
-        axios.get(`${this.state.serverUrl}/books?email=${this.state.email}`).then(response => {
-            this.setState({
-                booksData: response.data.books
-            })
-        }).catch(
-            error => {
-                alert(error.message);
-            }
-        );
-    }
+  
 
     render() {
         return (
@@ -144,8 +147,8 @@ export class BestBooks extends Component {
                             {book.name} <br></br>
                             {book.description}<br></br>
                             {book.status}<br></br>
-                            <button style={{background:'#F7DAD9'}} onClick={evt => this.deleteMyBook(idx)}>Delete</button>
-                            <button style={{background:'#FFF5DA'}} onClick={evt => this.showUpdateForm(book, idx)}>Update Form</button>
+                            <button style={{background:'#F7DAD9'}} onClick={() => this.deleteMyBook(idx)}>Delete</button>
+                            <button style={{background:'#FFF5DA'}} onClick={() => this.showUpdateForm(book, idx)}>Update Form</button>
                             <br></br>
                             <br></br>
                         </div>
@@ -169,9 +172,9 @@ export class BestBooks extends Component {
                                     updateBookNameUpdate={this.updateBookNameUpdate}
                                     updatedescriptionUpdate={this.updatedescriptionUpdate}
                                     updatestatusUpdate={this.updatestatusUpdate}
-                                    bookNameUpdate={this.state.bookNameUpdate}
-                                    descriptionUpdate={this.state.descriptionUpdate}
-                                    statusUpdate={this.state.statusUpdate}
+                                    bookNameUpdate={this.state.bookName}
+                                    descriptionUpdate={this.state.description}
+                                    statusUpdate={this.state.status}
 
                                 />
                             </div>
