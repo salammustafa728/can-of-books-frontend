@@ -5,6 +5,7 @@ export class CreateBook extends Component {
     render() {
         return (
             <div>
+                
                 <Form onSubmit={(evt) => this.props.creteMyBook(evt)}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Book Name</Form.Label>
@@ -19,7 +20,7 @@ export class CreateBook extends Component {
                         <Form.Control type={this.props.updateBookStatus}  onChange={(evt) => this.props.updateBookStatus(evt.target.value)} />
                     </Form.Group>
                    
-                    <Button variant="primary" type="submit">
+                    <Button style={{background:'#FF94CC'}} type="submit" onClick={this.props.creteMyBook}>
                         Create Book
                     </Button>
                 </Form>
