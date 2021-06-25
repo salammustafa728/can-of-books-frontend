@@ -7,20 +7,20 @@ export class CreateBook extends Component {
             <div>
                 
                 <Form onSubmit={(evt) => this.props.creteMyBook(evt)}>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3" controlId="name">
                         <Form.Label>Book Name</Form.Label>
-                        <Form.Control type={this.props.updateBookName} onChange={(evt) => this.props.updateBookName(evt.target.value)} />
+                        <Form.Control type='text'/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Discription</Form.Label>
-                        <Form.Control type={this.props.updateBookDescription} onChange={(evt) => this.props.updateBookDescription(evt.target.value)} />
+                        <Form.Control type='text'  />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="mb-3" controlId="status">
                         <Form.Label>Status</Form.Label>
-                        <Form.Control type={this.props.updateBookStatus}  onChange={(evt) => this.props.updateBookStatus(evt.target.value)} />
+                        <Form.Control type='text'   />
                     </Form.Group>
                    
-                    <Button style={{background:'#FF94CC'}} type="submit" onClick={this.props.creteMyBook}>
+                    <Button style={{background:'#FF94CC'}} type="submit">
                         Create Book
                     </Button>
                 </Form>
