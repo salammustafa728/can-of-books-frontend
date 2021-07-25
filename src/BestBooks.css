@@ -1,3 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
 .jumbotron{
   margin-bottom: 0;
+}
+
+body
+{
+  
+    font-family: Roboto, Arial;
+}
+
+.card {
+  width: 60%;
+  height: 80%;
+  max-height: 300px;
+  padding: auto;
+  text-align: center;
+  background: #c4fde1;
+  border-radius: 10px;
+  margin: 40px 40px;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 25px 25px 50px #edeea9, -25px -25px 50px #b3b9b7;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 50px;
+  background: #40394A;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  margin: 0.5px auto;
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+	text-align: center;
+	margin: 40px 0 40px;
+	text-align: center;
+	font-size: 30px;
+	color: #ecf0f1;
+	text-shadow: 2px 2px 4px #000000;
+	font-family: 'Cherry Swash', cursive;
 }

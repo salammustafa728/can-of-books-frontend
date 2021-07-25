@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { withAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel'
 import CreateBook from './Component/CreateBooks';
 import UpdateBook from './Component/UpdateFormModel';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Image from 'react-bootstrap/Image'
 import Card from 'react-bootstrap/Card'
-
+import  './BestBooks.css';
 
 export class BestBooks extends Component {
     constructor(props) {
@@ -153,10 +152,10 @@ export class BestBooks extends Component {
                         This is a collection of my favorite books
                     </p>
                 </Jumbotron>
-                <h2 style={{ color: 'red' }}>My Books</h2>
+                <h1 style={{ color: '#C1AC95' }}>My Books</h1>
                 {this.state.booksData.length > 0 && this.state.booksData.map((book, idx) => (
-                    <>
-                        <Card key={idx}>
+                    <div style={{marginLeft:'260px'}}>
+                        <Card key={idx} style={{}}>
                             <Card.Body>
                                 <Card.Title><h2>{book.name}</h2></Card.Title>
                                 <Card.Text>
@@ -166,26 +165,27 @@ export class BestBooks extends Component {
                                     {book.status}
                                 </Card.Text>
                             </Card.Body>
-                            <button onClick={e => this.deleteMyBook(idx)} >Delete Book</button>
-                            <button onClick={() => this.setState({showForm:true})} >Update Book</button>
+                            <button className='btn' onClick={e => this.deleteMyBook(idx)} >Delete Book</button>
+                            <button className='btn' onClick={() => this.setState({showForm:true})} >Update Book</button>
 
 
                         </Card>
 
-                    </>
+                    </div>
                 ))}
 
-                <div style={{ marginLeft: '50px', border: '2px solid #D6D2C4' }}>
-                    <CreateBook
+                <div style={{ marginLeft: '50px', border: '2px solid #D6D2C4', width:'50%', marginBottom:'10px',borderRadius:'10px' }}>
+                    <CreateBook 
                         creteMyBook={this.creteMyBook}
                         updateName={this.updateName}
                     // updateBookName={this.updateBookName}
                     // updateBookDescription={this.updateBookDescription}
                     // updateBookStatus={this.updateBookStatus}
                     />
+                         </div>
                     {
                         this.state.showForm &&
-                        <div>
+                        <div style={{ marginLeft: '50px', border: '2px solid #D6D2C4', width:'50%',marginTop:'10px',borderRadius:'10px' }}>
                             <UpdateBook
                                 updateBook={this.updateBook}
                                 recievedBookName={this.state.recievedBookName}
@@ -194,7 +194,7 @@ export class BestBooks extends Component {
                             />
                         </div>
                     }
-                </div>
+               
 
 
             </>
